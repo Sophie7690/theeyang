@@ -1,10 +1,10 @@
 <template>
 <div>
-    <input v-model="inputValue" @click="handleShow"/>
+    <input v-model="inputValue" @click="handleShow"  />
         <ul v-if="show" class="dec">
             <li v-for="(item,index) in list" 
                 :key="index"
-                @click="handleClick(item.message)"
+                @click="handleClick(item)"
                 class="dev"
             >
                 {{item.message}}
@@ -17,26 +17,23 @@
  import itemList from '@/components/item-list'
  export default {
     name: 'child',
+    props:['list'],
     data () {
         return {
             show: false,
-            inputValue: '',
-            list:[
-                {message: '千'},
-                {message: '玺'},
-                {message: '的'},
-                {message: '小'},
-                {message: '可'},
-                {message: '爱'}
-            ]
+            inputValue: ''
         }
     },
     methods: {
-        handleClick (msg) {
-            this.inputValue = msg;
+        handleClick (item) {
+            this.inputValue = item.message;
+            this.$emit("aaa" , this.inputValue)
+            // this.inputValue = msg;
+            // this.$emit("hand" , this.inputValue);
         },
         handleShow () {
             this.show = true;
+            
         }
     }
 }

@@ -1,6 +1,10 @@
 <template>
 <div>
-    <item-list></item-list>
+    <div>{{mm}}</div>
+    <item-list
+        :list="list"
+         @aaa="aaa"
+    ></item-list>
 </div>
     
 </template>
@@ -13,9 +17,25 @@
      },
      data() {
          return {
-             
+             list:[
+                {message: '千'},
+                {message: '玺'},
+                {message: '的'},
+                {message: '小'},
+                {message: '可'},
+                {message: '爱'}
+            ],
+            mm: ''
+         }
+         
+     },
+     methods: {
+         aaa (d) {
+           this.mm = d;
          }
      }
+   
+     
  }
  </script>
 <style lang="stylus">
